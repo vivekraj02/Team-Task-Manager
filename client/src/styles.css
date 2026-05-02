@@ -1,0 +1,277 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: radial-gradient(circle at top left, rgba(99, 102, 241, 0.12), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.1), transparent 24%),
+    #070b1a;
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.brand {
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-info span {
+  color: #cbd5e1;
+}
+
+.pill,
+.primary-button,
+.secondary-button {
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.pill,
+.secondary-button {
+  padding: 10px 18px;
+  background: rgba(255,255,255,0.08);
+  color: #e2e8f0;
+}
+
+.primary-button {
+  width: 100%;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #7c3aed 0%, #38bdf8 100%);
+  color: white;
+  font-weight: 700;
+}
+
+.primary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #fecaca;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 380px) 1fr;
+  gap: 24px;
+}
+
+.panel {
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.24);
+}
+
+.auth-panel h1,
+.dashboard-panel h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.8rem, 2.2vw, 2.4rem);
+}
+
+.auth-panel p,
+.eyebrow {
+  color: #94a3b8;
+}
+
+.form-card {
+  margin-top: 24px;
+  display: grid;
+  gap: 18px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.95);
+  color: #e2e8f0;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  padding: 20px;
+  border-radius: 20px;
+  min-height: 112px;
+}
+
+.bg-primary-soft {
+  background: rgba(124, 58, 237, 0.14);
+}
+
+.bg-secondary-soft {
+  background: rgba(6, 182, 212, 0.12);
+}
+
+.bg-accent-soft {
+  background: rgba(249, 115, 22, 0.14);
+}
+
+.stat-card span {
+  display: block;
+  color: #cbd5e1;
+  margin-bottom: 12px;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 1.7rem;
+}
+
+.task-board {
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 24px;
+  padding: 20px;
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  margin-bottom: 14px;
+}
+
+.task-card h4 {
+  margin: 0 0 6px;
+}
+
+.task-card p {
+  margin: 0;
+  color: #94a3b8;
+}
+
+.status-pill {
+  min-width: 96px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  text-align: center;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.task-form {
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 24px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.task-form h3 {
+  margin: 0 0 16px;
+  font-size: 1.2rem;
+}
+
+.task-form .form-field {
+  margin-bottom: 16px;
+}
+
+.task-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.95);
+  color: #e2e8f0;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.task-form select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.95);
+  color: #e2e8f0;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.form-actions .secondary-button {
+  flex: 0 0 auto;
+}
+
