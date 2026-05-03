@@ -34,10 +34,15 @@ export const api = {
   projects: {
     getAll: () => api.request('/projects'),
     create: (data) => api.request('/projects', { method: 'POST', body: JSON.stringify(data) }),
+    addMember: (id, data) => api.request(`/projects/${id}/members`, { method: 'POST', body: JSON.stringify(data) }),
+    removeMember: (id, userId) => api.request(`/projects/${id}/members/${userId}`, { method: 'DELETE' }),
   },
+
 
   tasks: {
     getAll: () => api.request('/tasks'),
     create: (data) => api.request('/tasks', { method: 'POST', body: JSON.stringify(data) }),
+    update: (id, data) => api.request(`/tasks/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
   },
 };
+

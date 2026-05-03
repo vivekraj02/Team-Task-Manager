@@ -46,4 +46,52 @@ router.post('/', async (req, res) => {
   res.status(201).json({ project });
 });
 
+router.post('/:id/members', async (req, res) => {
+  const { id } = req.params;
+  const { userId, role } = req.body;
+  
+  // Check if project owner or admin
+  const project = await prisma.project.findUnique({
+    where: { id },
+    include: { owner: true, members: true }
+  });
+  
+  if (!project || project.ownerId !== req.user.id) {
+    return res.status(403).json({ message: 'Not authorized' });
+  }
+
+  const member = await prisma.projectMember.create({
+    data: {
+      projectId: id,
+      userId,
+      role: role || 'MEMBER'
+    },
+    include: { user: true }
+  });
+
+  res.status(201).json({ member });
+});
+
+router.delete('/:id/members/:userId', async (req, res) => {
+  const { id, userId } = req.params;
+  
+  const project = await prisma.project.findUnique({
+    where: { id }
+  });
+
+  if (!project || project.ownerId !== req.user.id) {
+    return res.status(403).json({ message: 'Not authorized' });
+  }
+
+  await prisma.projectMember.deleteMany({
+    where: {
+      projectId: id,
+      userId
+    }
+  });
+
+  res.json({ message: 'Member removed' });
+});
+
+
 export default router;

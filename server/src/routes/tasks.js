@@ -43,4 +43,28 @@ router.post('/', async (req, res) => {
   res.status(201).json({ task });
 });
 
+router.patch('/:id', async (req, res) => {
+  const parse = updateTaskSchema.safeParse(req.body);
+  if (!parse.success) return res.status(400).json({ error: parse.error.errors });
+
+  const task = await prisma.task.findUnique({
+    where: { id: req.params.id },
+    include: { project: { include: { members: true } } }
+  });
+
+  if (!task) return res.status(404).json({ message: 'Task not found' });
+
+  const isMember = task.project.members.some(member => member.userId === req.user.id);
+  if (!isMember) {
+    return res.status(403).json({ message: 'Not authorized to update this task' });
+  }
+
+  const updatedTask = await prisma.task.update({
+    where: { id: req.params.id },
+    data: { status: parse.data.status }
+  });
+
+  res.json({ task: updatedTask });
+});
+
 export default router;

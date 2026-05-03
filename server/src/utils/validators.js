@@ -19,7 +19,13 @@ export const createProjectSchema = z.object({
 export const createTaskSchema = z.object({
   title: z.string().min(3),
   description: z.string().optional(),
+  priority: z.enum(['LOW', 'MEDIUM', 'HIGH']).optional(),
   assigneeId: z.string().optional(),
   dueDate: z.string().optional(),
   projectId: z.string().min(1)
+});
+
+
+export const updateTaskSchema = z.object({
+  status: z.enum(['TODO', 'IN_PROGRESS', 'DONE', 'BLOCKED'])
 });
