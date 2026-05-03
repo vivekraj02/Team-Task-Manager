@@ -2,8 +2,11 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  plugins: [react()],
+  // ... your other config
+  preview: {
+    allowedHosts: ["peaceful-heart-production-02ca.up.railway.app"]
+  },
   server: {
-    port: 5173
+    allowedHosts: ["peaceful-heart-production-02ca.up.railway.app"]
   }
-});
+})
